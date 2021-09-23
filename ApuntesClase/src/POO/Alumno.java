@@ -1,4 +1,4 @@
-package clase6;
+package POO;
 
 
 public class Alumno {
