@@ -28,12 +28,23 @@ public class Inicio {
 		System.out.println("La temperatura máxima en primavera es "
 							+tempMaxEstacion.get("Primavera")+" grados");
 		
+		
+		System.out.println(tempMaxEstacion);
+		System.out.println("Keys: "+tempMaxEstacion.keySet());		//Solo las keys
+		System.out.println("Values: "+tempMaxEstacion.values());		//Solo los values
+		
+		for (String clave :tempMaxEstacion.keySet()) {
+			System.out.println("La temperatura máxima en "+clave.toLowerCase()	//Para pasarlo a minúsculas
+					+" es de " + tempMaxEstacion.get(clave)+ " grados");
+		}
+		
+		
+		
 		//Elemininamos el elemento de clave primavera
 		tempMaxEstacion.remove("Primavera");
 		
-		System.out.println(tempMaxEstacion);
-		System.out.println(tempMaxEstacion.keySet());		//Solo las keys
-		System.out.println(tempMaxEstacion.values());		//Solo los values
+		
+		//Modificar elemento de la clave verano
+		tempMaxEstacion.put("Verano", 35);
 	}
-
 }
