@@ -69,8 +69,6 @@ public class Movil {
 		return texto;
 	}
 	
-	//redefinimos el equals
-	
 	
 	//...normales
 	//Método que aumenta en un GB la memoria
