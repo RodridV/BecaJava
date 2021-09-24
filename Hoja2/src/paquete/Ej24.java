@@ -11,7 +11,7 @@ public class Ej24 {
 		ascendente.
 		*/
 		
-		int num[]= new int [4];
+		int num[]= new int [25];
 		Scanner sc = new Scanner(System.in);
 		int nuevo_num;
 		
