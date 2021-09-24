@@ -36,6 +36,13 @@ public class Clase3 {
 				+ "Mi nombre es Rodrigo";
 		System.out.println(mensaje);
 		
+		
+		//Recorrer todos los valores de un array
+		int notas[]= {10,9,10,8};
+		
+		for (int nota:notas) {
+			System.out.println(nota);
+		}
 	}
 
 }
