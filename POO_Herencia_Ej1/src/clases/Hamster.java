@@ -22,4 +22,18 @@ public class Hamster extends Mascota	//Hacemos que herede de Mascota
 	//Campos
 	public String colorPelo;
 	public String marcaPienso;
+	
+	//Métodos
+	
+	//...redefinidos
+	@Override
+	public String toString() {
+		String texto;
+
+		texto = super.toString() //Llamamos al toString() de Mascota
+				+ "Color de pelo: "+this.colorPelo+"\n"
+				+"Marca de pienso: "+this.marcaPienso+"\n";
+		return texto;
+	}
+	
 }

@@ -18,6 +18,7 @@ public class Mascota extends Object		//Mi clase mascota herede de la clase Objec
 	
 	//Métodos
 	
+	//...normales
 	public String mostrar() {
 		String texto;
 		texto= "Nombre: "+nombre+"\n"
@@ -26,12 +27,12 @@ public class Mascota extends Object		//Mi clase mascota herede de la clase Objec
 		return texto;
 	}
 	
-	
+	//...redefinidos
 	@Override			//Sobreescribimos el toString
 	public String toString() {
 		String texto;
 		texto= "Nombre: "+nombre+"\n"
-				+"Edad: "+ edad;
+				+"Edad: "+ edad+" años"+"\n";
 		
 		return texto;
 	}

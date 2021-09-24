@@ -18,8 +18,9 @@ public class Inicio {
 		 */
 		 
 		Hamster miHamster = new Hamster("Marrón","ExtraVital","Fulgencio",3);
-		Hamster miHamster2 = new Hamster();
+		//Hamster miHamster2 = new Hamster();
 		
+		System.out.println(miHamster.toString());
 	}
 
 }
