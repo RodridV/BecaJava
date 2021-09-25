@@ -12,7 +12,7 @@ public class Ej30 {
 		*/
 		
 		int nota_min=0,nota_max=5;
-		int total_punt=10;	
+		int total_punt=200;	
 		int lista_puntuaciones[]=new int[total_punt];
 		int puntuacion;
 		
