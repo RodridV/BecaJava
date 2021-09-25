@@ -11,45 +11,37 @@ public class Ej30 {
 		una de las puntuaciones, su frecuencia.
 		*/
 		
-		int total_punt=200;
-		int puntuacion,num_punt=0;		//Contador de las puntuaciones
+		int nota_min=0,nota_max=5;
+		int total_punt=10;	
+		int lista_puntuaciones[]=new int[total_punt];
+		int puntuacion;
+		
 		Scanner sc = new Scanner(System.in);
-		int nota0=0,nota1=0,nota2=0,nota3=0,nota4=0,nota5=0;		//Acumuladores para cada nota
-		while (num_punt<total_punt) {
+		
+		
+		//Leemos y guardamos las puntuaciones
+		for (int i=0;i<lista_puntuaciones.length;i++) {
 			System.out.println("Introduzca puntuación");
 			puntuacion=sc.nextInt();
-			if(puntuacion<0 || puntuacion>5) {
-				System.out.println("La puntuación debe estar comprendida entre 0 y 5");
+			if (puntuacion<nota_min || puntuacion >nota_max) {
+				System.out.println("La nota debe estar comprendida entre "+nota_min+" y "+nota_max);
 			}
 			else {
-				if (puntuacion==0) {
-					nota0++;
-				}
-				else if(puntuacion==1) {
-					nota1++;
-				}
-				else if(puntuacion==2) {
-					nota2++;
-				}
-				else if(puntuacion==3) {
-					nota3++;
-				}
-				else if(puntuacion==4) {
-					nota4++;
-				}
-				else {
-					nota5++;
-				}
+				lista_puntuaciones[i]=puntuacion;
 			}
-			num_punt++;
 		}
 		
-		System.out.println("La frecuencia para la puntuación 0 es "+(((float)nota0/total_punt)*100)+"%");
-		System.out.println("La frecuencia para la puntuación 1 es "+(((float)nota1/total_punt)*100)+"%");
-		System.out.println("La frecuencia para la puntuación 2 es "+(((float)nota2/total_punt)*100)+"%");
-		System.out.println("La frecuencia para la puntuación 3 es "+(((float)nota3/total_punt)*100)+"%");
-		System.out.println("La frecuencia para la puntuación 4 es "+(((float)nota4/total_punt)*100)+"%");
-		System.out.println("La frecuencia para la puntuación 5 es "+(((float)nota5/total_punt)*100)+"%");
+		//Ahora calculamos la frecuancia para cada nota
+		for (int i=nota_min;i<=nota_max;i++) {
+			float suma=0;						//Para el cálculo de las frecuencias
+			for(int j=0;j<lista_puntuaciones.length;j++) {
+				if(lista_puntuaciones[j]==i) {
+					suma++;
+				}
+			}
+			float frec = 100*(suma/lista_puntuaciones.length);
+			System.out.println("La frecuencia de la puntuación "+i+" es "+frec+"%");
+		}
 		
 		
 		sc.close();
