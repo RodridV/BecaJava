@@ -1,6 +1,6 @@
 package paquete2;
 
-import java.util.Arrays;
+
 import java.util.Scanner;
 
 public class Ej31 {
@@ -49,7 +49,7 @@ public class Ej31 {
 					else {
 						System.out.println("\nIntroduzca número entero:");
 						num=sc.nextInt();
-						
+						repe=false;
 						//Comprobamos que no esté repetido
 						for (int i=0;i<numeros.length;i++) {
 							if (num==numeros[i]) {
@@ -60,24 +60,54 @@ public class Ej31 {
 							System.out.println("El número es repetido.\n");
 						}
 						else {
-							//Falta ordenar
-							numeros[posi]=num;
+							//Añadimos el número y ordenamos
+							if (posi==0) {			//Para añadir el primer número sin problema
+								numeros[posi]=num;
+							}
+							else {
+								if (num>numeros[posi-1]) {		//Si el nuevo número es mayor que el último, se coloca inmediatamente después
+									numeros[posi]=num;
+								}
+								else {
+									for (int j=posi;j>0;j--) {		//Desde el final hasta el principio vamos comprobando en qué posición se debe introducir el nuevo número
+										if(num<numeros[j-1]) {
+											numeros[j]=numeros[j-1];
+											numeros[j-1]=num;
+										}
+										else {
+											numeros[j]=num;
+											break;				//Una vez introducido el nuevo número, salimos del bucle
+										}
+									}
+								}
+							}
 							posi++;
 							System.out.println("Número guardado.\n");
 						}
 					}
+					
 				break;	
 				
 				case 2:		//Listar (mostrar números)
-					System.out.println("La lista de números es:\n"
-					+(Arrays.toString(numeros)));
+					if(posi==0) {
+						System.out.println("No hay datos.\n");
+					}
+					else {
+						System.out.println("La lista de números es:");
+						System.out.print("[");
+						for(int j=0;j<posi-1;j++) {
+							System.out.print(numeros[j]+ ", ");
+						}
+						System.out.println(numeros[posi-1]+"]\n");
+					}
 				break;
 				
 				case 3:		//Eliminar número
 					System.out.println("¿Qué número desea eliminar?");
 					num=sc.nextInt();
+					encontrado=false;
 					for (int i=0;i<numeros.length;i++) {
-						if (num==numeros[i]) {
+						if (num==numeros[i]) {				//Comprobamos que el número que quiere eliminar existe en nuestro array
 							encontrado=true;
 							for (int j=i;j<numeros.length-1;j++) {
 								numeros[j]=numeros[j+1];
@@ -85,23 +115,26 @@ public class Ej31 {
 						}
 					}
 					if (encontrado==false) {
-						System.out.println("El número seleccionado no se ha encontrado");
+						System.out.println("El número seleccionado no se ha encontrado.\n");
 					}
 					else {
-						posi--;
+						posi--;							//Restamos una posición de conteo
 						System.out.println("El número "+ num+" ha sido eliminado.\n");
+						for (int i =posi;i<numeros.length;i++) {
+							numeros[i]=0;
+						}
 					}
 					
 				break;
 				
 				case 4:		//Eliminar todos los números
-					
-					numeros=new int[numeros.length];
-					
+					numeros=new int[numeros.length];		//También se puede excluir esto ya que reiniciamos la posición
+					posi=0;
 					System.out.println("Todos los números han sido eliminados.\n");
 				break;
 				
 				case 5:		//Salir del programa
+					System.out.println("Saliendo del programa...");
 				break;
 				
 				default:
