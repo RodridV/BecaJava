@@ -51,7 +51,6 @@ public class Gestion_Listado implements IGestionListado
 		else {
 			System.out.println("El número que desea eliminar no se encuentra en el listado.\n");
 		}
-		
 	}
 
 	@Override
