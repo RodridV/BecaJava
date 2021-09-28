@@ -3,7 +3,6 @@ package clases;
 public class Alumno {
 
 	//Constructores
-	
 	public Alumno(int matricula) {
 		this.matricula=matricula;
 	}

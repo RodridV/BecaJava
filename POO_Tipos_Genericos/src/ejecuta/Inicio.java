@@ -60,22 +60,33 @@ public class Inicio {
 			
 			switch(opcion){
 				case 1:
-					System.out.println(repoAlumno.listar2());
+					if(repoAlumno.listar2().size()==0) {
+						System.out.println("No hay alumnos introducidos en el sistema.\n");
+					}
+					else {
+						System.out.println(repoAlumno.listar2());
+					}
+					
 					break;
 					
 				case 2:
-					System.out.println("Introduzca número de matrícula.");
-					matricula=Integer.valueOf(sc.nextLine());
-					if (repoAlumno.leer(matricula)==null) {
-						System.out.println("Alumno no encontrado.\n");
+					if(repoAlumno.listar2().size()==0) {
+						System.out.println("No hay alumnos introducidos en el sistema.\n");
 					}
 					else {
-						System.out.println(repoAlumno.leer(matricula));
+						System.out.println("Introduzca número de matrícula:");
+						matricula=Integer.valueOf(sc.nextLine());
+						if (repoAlumno.leer(matricula)==null) {
+							System.out.println("Alumno no encontrado.\n");
+						}
+						else {
+							System.out.println(repoAlumno.leer(matricula));
+						}
 					}
 					break;
 					
 				case 3:
-					System.out.println("Introduzca matrícula del alumno que desea eliminar.");
+					System.out.println("Introduzca matrícula del alumno que desea eliminar:");
 					matricula=Integer.valueOf(sc.nextLine());
 					repoAlumno.eliminar2(matricula);
 					break;

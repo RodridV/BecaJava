@@ -20,6 +20,7 @@ public class RepoAlumno implements I_CRUD<Alumno, Integer>
 	@Override
 	public void nuevo(Alumno clase) {
 		this.listado.put(clase.matricula, clase);
+		System.out.println("Alumno añadido.\n");
 	}
 
 	@Override
@@ -40,6 +41,19 @@ public class RepoAlumno implements I_CRUD<Alumno, Integer>
 		System.out.println("Editado con éxito.\n");
 	}
 
+	
+	@Override
+	public void eliminar2(Integer id) {
+		if (this.listado.remove(id)==null) {
+			System.out.println("No se ha eliminado porque no se encuentra.\n");
+		}	
+		else {
+			System.out.println("Eliminado con éxito.\n");
+		}
+	}
+	
+	
+	//Generados a causa del RepoArticulo
 	@Override
 	public void eliminar(Alumno clase) {
 		this.listado.remove(clase.matricula);
@@ -47,18 +61,8 @@ public class RepoAlumno implements I_CRUD<Alumno, Integer>
 	}
 
 	@Override
-	public ArrayList<Alumno> listar() {		//Generado a causa del RepoArticulo
+	public ArrayList<Alumno> listar() {		
 		return null;
 	}
 
-	@Override
-	public void eliminar2(Integer id) {
-		if (this.listado.remove(id)==null) {
-			System.out.println("No se ha eliminado porque no se encuentra.\n");
-		}
-		else {
-			System.out.println("Eliminado con éxito.\n");
-		}
-	}
-	
 }
