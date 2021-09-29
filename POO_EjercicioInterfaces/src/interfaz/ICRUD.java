@@ -14,7 +14,7 @@ public interface ICRUD <T1, T2>
 	
 	HashMap <T2, T1> listar();
 	
-	void editar(T2 id,T1 clase);		//Datos a modificar
+	void editar(T2 id);		//Identificación de lo que se va a modificar
 	
 	void eliminar(T2 id);
 	

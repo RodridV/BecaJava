@@ -19,9 +19,9 @@ public class Coches {
 	@Override
 	public String toString() {
 		return "Coche: \n"
-				+ "- Matricula:" + matricula + "\n"
-				+ "- Marca=" + marca + "\n"
-				+ "- Color=" + color + "\n";
+				+ " - Matricula: " + matricula + "\n"
+				+ " - Marca: " + marca + "\n"
+				+ " - Color: " + color + "\n";
 	}
 	@Override
 	public boolean equals(Object obj) {

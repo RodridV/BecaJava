@@ -46,39 +46,10 @@ public class Inicio {
 					repoCoche.eliminar(matricula);
 					break;
 					
-				case 4:
+				case 4:	
 					System.out.println("Introduzca matrícula del coche que desea editar:");
 					matricula=sc.nextLine();
-					System.out.println("¿Qué desea modificar: marca(1), color(2), ambas(3)?");
-					int respuesta= Integer.valueOf(sc.nextLine());
-					if (respuesta==1) {
-						System.out.println("Introduzca marca:");
-						marca=sc.nextLine();
-						color=repoCoche.lista_coches.get(matricula).color;
-						coche=new Coches(matricula, marca, color);
-						repoCoche.editar(matricula,coche);
-						System.out.println("Datos del coche modificados.\n");
-					}
-					else if (respuesta ==2) {
-						System.out.println("Introduzca color:");
-						color=sc.nextLine();
-						marca=repoCoche.lista_coches.get(matricula).marca;
-						coche=new Coches(matricula, marca, color);
-						repoCoche.editar(matricula,coche);
-						System.out.println("Datos del coche modificados.\n");
-					}
-					else if(respuesta==3) {
-						System.out.println("Introduzca marca:");
-						marca=sc.nextLine();
-						System.out.println("Introduzca color:");
-						color=sc.nextLine();
-						coche=new Coches(matricula, marca, color);
-						repoCoche.editar(matricula,coche);
-						System.out.println("Datos del coche modificados.\n");
-					}
-					else {
-						System.out.println("Opción incorrecta.\n");
-					}
+					repoCoche.editar(matricula);
 					break;
 					
 				case 5:
