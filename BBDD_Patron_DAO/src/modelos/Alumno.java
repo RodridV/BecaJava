@@ -12,8 +12,19 @@ public class Alumno {
 	}
 	
 	//Campos
-	public int matricula;
+	public int matricula;	//PK
 	public String apellido;
 	public String nombre;
+	
+	//Métodos
+	//...toString
+	@Override
+	public String toString() {
+		return "Alumno:.\n"
+				+"Nº de matricula: " + matricula
+				+ "Apellido: " + apellido
+				+ "Nombre: " + nombre;
+	}
+	
 	
 }

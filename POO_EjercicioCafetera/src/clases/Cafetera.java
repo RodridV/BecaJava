@@ -13,26 +13,16 @@ public class Cafetera {
 	
 	//Métodos
 	
-	//...getters and setters
-	public float getVolumen() {
-		return volumen;
-	}
+	//...setters
 
 	public void setVolumen(float volumen) {
 		this.volumen = volumen;
-	}
-
-	public float getVolumenVaso() {
-		return volumenVaso;
 	}
 
 	public void setVolumenVaso(float volumenVaso) {
 		this.volumenVaso = volumenVaso;
 	}
 
-	public float getVolumenTaza() {
-		return volumenTaza;
-	}
 
 	public void setVolumenTaza(float volumenTaza) {
 		this.volumenTaza = volumenTaza;

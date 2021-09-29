@@ -14,13 +14,15 @@ public class BaseDatos {
 	}
 	
 	//Campos
-	private Connection conexion;
+	public Connection conexion;
 	private String cadenaConexion;
 	
 	//Métodos
 	//...conectar con la base de datos
 	public Connection conectar() throws Exception {
 		this.conexion=DriverManager.getConnection(cadenaConexion);
+		//Connection conexion = DriverManager.getConnection(cadenaConexion);
+		
 		System.out.println("Conectado\n");
 		return conexion;
 	}
