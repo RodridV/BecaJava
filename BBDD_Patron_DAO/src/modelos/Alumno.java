@@ -20,10 +20,10 @@ public class Alumno {
 	//...toString
 	@Override
 	public String toString() {
-		return "Alumno:.\n"
-				+"Nº de matricula: " + matricula
-				+ "Apellido: " + apellido
-				+ "Nombre: " + nombre;
+		return "Alumno:\n"
+				+"Nº de matricula: " + matricula+"\n"
+				+ "Apellido: " + apellido+"\n"
+				+ "Nombre: " + nombre+"\n";
 	}
 	
 	

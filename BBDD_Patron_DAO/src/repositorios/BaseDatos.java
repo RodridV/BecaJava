@@ -23,7 +23,7 @@ public class BaseDatos {
 		this.conexion=DriverManager.getConnection(cadenaConexion);
 		//Connection conexion = DriverManager.getConnection(cadenaConexion);
 		
-		System.out.println("Conectado\n");
+		System.out.println("Conectado a la base de datos.\n");
 		return conexion;
 	}
 	
@@ -32,7 +32,7 @@ public class BaseDatos {
 		if (this.conexion!=null && this.conexion.isClosed()==false) 
 		{
 			this.conexion.close();
-			System.out.println("Desconectado");
+			System.out.println("Desconectado de la base de datos.\n");
 		}
 	}
 	

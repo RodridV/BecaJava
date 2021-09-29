@@ -1,10 +1,8 @@
 package repositorios;
 
-import java.util.ArrayList;
-
 public interface ICRUD<Modelo,PK> {
 
-	ArrayList<Modelo> listar();
+	void listar() throws Exception;
 	Modelo leer(PK pk);
 	
 	void nuevo(Modelo modelo) throws Exception;
