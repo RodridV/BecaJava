@@ -9,25 +9,14 @@ public class Inicio {
 
 	public static void main(String[] args) {
 
-		/*
-		BaseDatos bd = new BaseDatos("185.224.138.154","u581554845_alumno","Root1234","u581554845_indra");
-		
-		try {
-			bd.conectar();
-		} catch (Exception e) {
-			System.out.println("Error de conexión con la base de datos.\n");
-		}
-		*/
-		
-		//Alumno alumno = new Alumno(999, "Perez", "Pepito");		//No podemos meter dos alumnos con la misma matrícula
 		RepoAlumno repoAlumno= new RepoAlumno("185.224.138.154","u581554845_alumno","Root1234","u581554845_indra");
 		Alumno alumno = new Alumno();
 		
 		String menu = "Menú: \n"
-				+ "1. Nuevo alumno.\n"
+				+ "1. Nuevo alumno.\n"					//No podemos meter dos alumnos con la misma matrícula
 				+ "2. Eliminar alumno.\n"
-				+ "3. Editar alumno.\n"
-				+ "4. Leer alumno.\n"
+				+ "3. Editar datos de alumno.\n"
+				+ "4. Leer datos de alumno.\n"
 				+ "5. Listar alumnos.\n"
 				+ "6. Salir del programa.\n";
 		int opcion;
