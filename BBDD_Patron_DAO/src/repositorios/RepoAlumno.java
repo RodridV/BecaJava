@@ -3,7 +3,7 @@ package repositorios;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
+import java.util.Scanner;
 
 import modelos.Alumno;
 
@@ -21,6 +21,8 @@ public class RepoAlumno extends BaseDatos implements ICRUD <Alumno,Integer>
 	private PreparedStatement ps;
 	private Statement stat;
 	private ResultSet rs;
+	
+	public Scanner sc = new Scanner(System.in);		//Para pedir datos
 	
 	//Métodos
 	//... procedentes de ICRUD
@@ -49,10 +51,28 @@ public class RepoAlumno extends BaseDatos implements ICRUD <Alumno,Integer>
 	}
 
 	@Override
-	public Alumno leer(Integer pk) {
+	public Alumno leer(Integer pk) throws Exception {
+		this.conectar();
+		Alumno alumno;
 		
+		this.sql="SELECT matricula, nombre, apellido FROM Alumno WHERE matricula = ?";
+		this.ps = super.conexion.prepareStatement(sql);
+		this.ps.setInt(1, pk);
 
-		return null;
+		this.rs = this.ps.executeQuery();
+		
+		if( this.rs.next() == true ) 
+		{
+			alumno = new Alumno( rs.getInt("matricula"), rs.getString("apellido"), rs.getString("nombre") );
+		}
+		else
+		{
+			alumno = null;
+		}
+		
+		super.desconectar();
+			
+		return alumno;
 	}
 
 	@Override
@@ -72,7 +92,7 @@ public class RepoAlumno extends BaseDatos implements ICRUD <Alumno,Integer>
 		cantidad=this.ps.executeUpdate();			//Nos devuelve el número de filas insertadas (si está bien hecho será 1)
 		
 		if (cantidad==1) {
-			System.out.println("Guardado.\n");
+			System.out.println("Los datos del alumno han sido guardados.\n");
 		}
 		else {
 			System.out.println("No se ha podido guardar.\n");
@@ -81,13 +101,108 @@ public class RepoAlumno extends BaseDatos implements ICRUD <Alumno,Integer>
 	}
 
 	@Override
-	public void editar(Integer pk, Alumno modelo) {
+	public void editar(Integer pk) throws Exception {
 		
+		int cantidad;
+		Alumno alumno;
+		int opcion;
+		super.conectar();
+		
+		//Creo variables nuevas para solicitar datos al usuario por consola.
+		String sql2;
+		PreparedStatement ps2;
+		//Leemos los datos del alumno que se desea modificar
+		sql2="SELECT matricula, nombre, apellido FROM Alumno WHERE matricula = ?";
+		ps2 = super.conexion.prepareStatement(sql2);
+		ps2.setInt(1, pk);
+
+		this.rs = ps2.executeQuery();
+		
+		if( this.rs.next() == true ) 
+		{
+			alumno = new Alumno( rs.getInt("matricula"), rs.getString("apellido"), rs.getString("nombre") );
+		}
+		else
+		{
+			alumno = null;
+		}
+		
+		//Una vez leidos los datos, modificamos los que seleccione el usuario.		
+		this.sql = "UPDATE Alumno SET matricula=?, nombre=?, apellido=? WHERE matricula =?";
+		this.ps = super.conexion.prepareStatement(sql);
+		
+		System.out.println("¿Qué desea editar?:\n"
+							+ "1. Nº de matrícula.\n"
+							+ "2. Nombre y apellido.\n"
+							+ "3. Nº de matrícula, nombre y apellido.\n");
+		opcion=sc.nextInt();
+		
+		if (opcion==1) {
+			System.out.println("Introduzca nueva matrícula:");
+			alumno.matricula=sc.nextInt();
+		}
+		else if(opcion==2) {
+			System.out.println("Introduzca nombre:");
+			alumno.nombre=sc.next();
+			System.out.println("Introduzca apellido:");
+			alumno.apellido=sc.next();
+		}
+		else if (opcion==3) {
+			System.out.println("Introduzca nueva matrícula:");
+			alumno.matricula=sc.nextInt();
+			System.out.println("Introduzca nombre:");
+			alumno.nombre=sc.next();
+			System.out.println("Introduzca apellido:");
+			alumno.apellido=sc.next();
+		}
+		else {
+			System.out.println("Opción incorrecta.\n");
+		}
+		
+		//Modificamos con los nuevos datos
+		this.ps.setInt(1, alumno.matricula);
+		this.ps.setString(2, alumno.nombre);
+		this.ps.setString(3, alumno.apellido);
+		this.ps.setInt(4, pk);
+		
+		cantidad = this.ps.executeUpdate();
+		
+		if(cantidad==1)
+		{
+			System.out.println("Los datos del alumno han sido modificados.\n");
+		}
+		else 
+		{
+			System.out.println("No se ha modificado, la fila no existe.\n");
+		}
+		
+		super.desconectar();
 	}
 
 	@Override
-	public void eliminar(Integer pk) {
+	public void eliminar(Integer pk) throws Exception {
 		
+		int cantidad;
+		
+		super.conectar();
+		
+		this.sql = "DELETE FROM Alumno WHERE matricula = ?";
+		this.ps = super.conexion.prepareStatement(sql);
+		
+		this.ps.setInt(1, pk);
+		
+		cantidad = this.ps.executeUpdate();
+		
+		if(cantidad==1)
+		{
+			System.out.println("Los datos del alumno han sido eliminados.\n");
+		}
+		else 
+		{
+			System.out.println("No se ha eliminado, la fila no existe.\n");
+		}
+		
+		super.desconectar();
 		
 	}
 
