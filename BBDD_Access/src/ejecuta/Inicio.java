@@ -11,7 +11,7 @@ public class Inicio {
 	public static void main(String[] args) 
 	{
 			
-		RepoAlumno repo = new RepoAlumno("BBDDAlumnos");
+		RepoAlumno repo = new RepoAlumno("BBDDPrueba");
 		Alumno alumno = new Alumno();
 		Scanner sc = new Scanner(System.in);
 		int matricula;
@@ -122,13 +122,13 @@ public class Inicio {
 					
 					System.out.println("A continuación se le pedirán los nuevos datos del alumno:");
 					
-					System.out.print("\tMATRICULA: ");
+					System.out.print("\t Matrícula: ");
 					alumno.matricula = Integer.valueOf( sc.nextLine() );
 					
-					System.out.print("\tNOMBRE: ");
+					System.out.print("\t Nombre: ");
 					alumno.nombre = sc.nextLine();
 					
-					System.out.print("\tAPELLIDO: ");
+					System.out.print("\t Apellido: ");
 					alumno.apellido = sc.nextLine();
 					
 					try 
@@ -142,7 +142,7 @@ public class Inicio {
 					break;
 				
 				case 6:
-					System.out.println("Hasta pronto!");
+					System.out.println("Fin del programa.");
 					break;
 				default:
 					System.out.println("Opción incorrecta.");

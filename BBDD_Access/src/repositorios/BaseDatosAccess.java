@@ -21,7 +21,7 @@ public class BaseDatosAccess {
 		
 		conexion = DriverManager.getConnection(rutaFichero);
 		
-		System.out.println("Conectado");
+		System.out.println("Conectado a la base de datos.\n");
 		
 		return conexion;
 
