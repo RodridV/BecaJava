@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class BaseDatosAccess {
-
+	
 	//Constructores
 	public BaseDatosAccess(String fichero) {
-		this.rutaFichero="jdbc:ucanaccess://"+ fichero +".accdb";
+		this.rutaFichero="jdbc:ucanaccess://C:\\Users\\rodri\\Documents\\"+ fichero +".accdb";
 	}
 	
 	
